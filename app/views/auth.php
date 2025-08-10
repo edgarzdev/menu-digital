@@ -4,47 +4,50 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Acceso | MVC Template</title>
-    <link rel="stylesheet" href="<?= URL ?>/css/auth.css">
+    <title>Login | Menu Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-    <div class="tabs-container">
-        <input type="radio" name="tab" id="tab-login" checked>
-        <input type="radio" name="tab" id="tab-signup">
+<body class="flex items-center justify-center min-h-screen" style='font-family: " Work Sans", "Noto Sans" , sans-serif;'>
+    <?php $this->showMessages(); ?>
 
-        <div class="tabs">
-            <label for="tab-login">Iniciar Sesión</label>
-            <label for="tab-signup">Registrarse</label>
-        </div>
+    <div class="w-full max-w-sm p-6 bg-white rounded-2xl shadow-md border ">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">
+            Inicia sesión
+        </h2>
+        <form action="<?= URL ?>/auth/login" method="POST" class="space-y-5">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Usuario</label>
+                <input type="text" id="username" name="username" required
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+            </div>
 
-        <!-- Login Form -->
-        <div class="form-container form-login">
-            <h2 class="form-title">Bienvenido</h2>
-            <p class="info">Controlador: AuthController</p>
-            <?php $this->showMessages(); ?>
-            <form action="<?= URL ?>/auth/login" method="POST">
-                <input type="text" name="username" placeholder="Usuario" required>
-                <input type="password" name="password" placeholder="Contraseña" required>
-                <button type="submit">Entrar</button>
-            </form>
-        </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+                <input type="password" id="password" name="password" required
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500" />
+            </div>
+            <!--
+            <div class="flex items-center justify-between">
+                <label class="flex items-center text-sm text-gray-600">
+                    <input type="checkbox" class="form-checkbox h-4 w-4 text-orange-500" />
+                    <span class="ml-2">Recordarme</span>
+                </label>
+                <a href="#" class="text-sm text-yellow-500 hover:underline">¿Olvidaste tu contraseña?</a>
+            </div>-->
 
-        <!-- Signup Form -->
-        <div class="form-container form-signup">
-            <h2 class="form-title">Crear cuenta</h2>
-            <p class="info">Controlador: AuthController</p>
-            <?php $this->showMessages(); ?>
-            <form action="<?= URL ?>/auth/signup" method="POST">
-                <input type="text" name="username" placeholder="Usuario" required>
-                <input type="email" name="email" placeholder="Correo electrónico" required>
-                <input type="password" name="password" placeholder="Contraseña" required>
-                <input type="password" name="confirm_password" placeholder="Confirmar contraseña" required>
-                <button type="submit">Registrarse</button>
-            </form>
-        </div>
+            <button type="submit"
+                class="w-full bg-orange-500 hover:bg-orange-400 text-white font-semibold py-2 px-4 rounded-lg transition">
+                Iniciar sesión
+            </button>
+        </form>
+
+        <!--<p class="mt-6 text-center text-sm text-gray-600">
+            ¿No tienes una cuenta?
+            <a href="#" class="text-yellow-500 hover:underline font-medium">Regístrate</a>
+        </p>-->
     </div>
-    <a href="<?= URL ?>/">Volver al inicio</a>
+
 </body>
 
 </html>
