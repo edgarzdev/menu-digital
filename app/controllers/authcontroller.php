@@ -3,13 +3,12 @@
 class AuthController extends Controller
 {
     protected Session $session;
-    protected UserModel $userModel;
 
     public function __construct()
     {
         parent::__construct();
         //importa los modelos requeridos
-        $this->requireModel(['user']);
+        $this->requireModel(['usuario']);
         //carga el modelo principal
         $this->loadModel('auth');
 
@@ -33,7 +32,7 @@ class AuthController extends Controller
         // logica de inicio de session
         $id = $this->model->login($username, $password);
         if ($id) {
-            $user = new UserModel();
+            $user = new UsuarioModel();
             $user->getById($id);
             $userData = $user->toArray();
 
@@ -51,43 +50,9 @@ class AuthController extends Controller
         }
     }
 
-    public function signup()
-    {
-        if (!$this->existPOST(['username', 'email', 'password'])) {
-            $this->redirect('auth/signup', ['error' => Errors::ERROR_SIGNUP_INCOMPLETE]);
-            return;
-        }
-
-        $username = trim($this->getPost('username'));
-        $email = trim($this->getPost('email'));
-        $password = trim($this->getPost('password'));
-
-        // Validaciones básicas (puedes mejorar con regex, filtros, etc.)
-        if (empty($username) || empty($email) || empty($password)) {
-            $this->redirect('auth/signup', ['error' => Errors::ERROR_SIGNUP_EMPTY_FIELDS]);
-            return;
-        }
-
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->redirect('auth/signup', ['error' => Errors::ERROR_SIGNUP_INVALID_EMAIL]);
-            return;
-        }
-
-        $user = new UserModel();
-        $user->setUsername($username);
-        $user->setEmail($email);
-        $user->setPassword($password);
-
-        if ($user->save()) {
-            $this->redirect('auth', ['success' => Success::SUCCESS_USER_REGISTERED]);
-        } else {
-            $this->redirect('auth', ['error' => Errors::ERROR_SIGNUP_USER_EXISTS]);
-        }
-    }
     public function logout()
     {
         $this->session->destroy();
         $this->redirect('auth');
     }
 }
-?>

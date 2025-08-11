@@ -6,32 +6,31 @@ class AuthModel extends Model
         parent::__construct();
     }
 
-    public function login($username, $password)
+    public function login($usuario, $password)
     {
-        error_log("loginModel::login()");
+        error_log("AuthModel::login()");
+
         try {
-            $query = $this->prepare('SELECT * FROM user WHERE username = :username');
-            $query->execute(['username' => $username]);
+            $userModel = new UsuarioModel();
 
-            if ($query->rowCount() == 1) {
-                $item = $query->fetch(PDO::FETCH_ASSOC);
+            $user = $userModel->getByUsuario($usuario);
 
-                $user = new UserModel();
-                $user->from($item);
-
-                error_log('AuthModel::login(): user id =>' . $user->getId());
+            if ($user) {
+                error_log('AuthModel::login(): user id => ' . $user->getIdUsuario());
 
                 if (password_verify($password, $user->getPassword())) {
                     error_log('AuthModel::login(): success');
-                    //return $user;
-                    //return true;
-                    return $user->getId();
+                    return $user->getIdUsuario();
                 } else {
-                    error_log('AuthModel::login(): error');
+                    error_log('AuthModel::login(): password incorrect');
                     return false;
                 }
+            } else {
+                error_log('AuthModel::login(): usuario no encontrado');
+                return false;
             }
         } catch (PDOException $e) {
+            error_log('AuthModel::login(): PDOException - ' . $e->getMessage());
             return false;
         }
     }
