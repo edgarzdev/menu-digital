@@ -37,11 +37,7 @@ class AuthController extends Controller
             $userData = $user->toArray();
 
             // colocando datos importantes en sesion
-            $this->session->set('user', [
-                'id' => $userData['id'],
-                'username' => $userData['username'],
-                'email' => $userData['email']
-            ]);
+            $this->session->set('usuario_id', $userData['id_usuario']);
             $this->redirect('dashboard');
             return;
         } else {

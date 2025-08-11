@@ -9,19 +9,19 @@ class SecureController extends Controller
     {
         parent::__construct();
 
+        $this->loadModel('usuario');
+
         $this->session = new Session();
 
         // Middleware sencillo manual para proteger controlador
-        if (!$this->session->get('user')) {
+        if (!$this->session->get('usuario_id')) {
             $this->redirect('auth');
             exit;
-        }else{            
-            $this->user= $this->session->get('user');
+        } else {
+            $userIdofSession = $this->session->get('usuario_id');
+            $usuario = new UsuarioModel();
+            $usuario->getById($userIdofSession);
+            $this->user = $usuario;
         }
-
-        // Cargar usuario de DB para usarlo en todas las vistas/acciones
-        //$userModel = new UserModel();
-        //$this->user = $userModel->getById($this->session->get('user_id'));
     }
 }
-?>
