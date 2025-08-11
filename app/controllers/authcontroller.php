@@ -38,7 +38,7 @@ class AuthController extends Controller
 
             // colocando datos importantes en sesion
             $this->session->set('usuario_id', $userData['id_usuario']);
-            $this->redirect('dashboard');
+            $this->redirect('admin');
             return;
         } else {
             $this->redirect('auth', ['error' => Errors::ERROR_LOGIN_AUTHENTICATE_DATA]);
