@@ -110,6 +110,7 @@ $accion = $this->data['accion'] ?? "";
                             <input
                                 name="precio"
                                 type="number"
+                                step="0.01"
                                 placeholder="Introduzca el precio"
                                 class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 focus:ring-2 focus:ring-orange-400 border border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"
                                 value="<?= htmlspecialchars($producto['precio']??'')?>" />
