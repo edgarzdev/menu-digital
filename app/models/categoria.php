@@ -3,12 +3,14 @@ class CategoriaModel extends Model
 {
     private $id_categoria;
     private $nombre;
+    private $descripcion;
 
     public function __construct()
     {
         parent::__construct();
         $this->id_categoria = null;
         $this->nombre = '';
+        $this->descripcion = '';
     }
 
     public function getAll()
@@ -41,14 +43,18 @@ class CategoriaModel extends Model
     {
         try {
             if ($this->id_categoria) {
-                $query = $this->prepare('UPDATE categoria SET nombre = :nombre WHERE id_categoria = :id_categoria');
+                $query = $this->prepare('UPDATE categoria SET nombre = :nombre, descripcion = :descripcion WHERE id_categoria = :id_categoria');
                 return $query->execute([
                     'nombre' => $this->nombre,
+                    'descripcion' => $this->descripcion,
                     'id_categoria' => $this->id_categoria
                 ]);
             } else {
-                $query = $this->prepare('INSERT INTO categoria (nombre) VALUES (:nombre)');
-                $result = $query->execute(['nombre' => $this->nombre]);
+                $query = $this->prepare('INSERT INTO categoria (nombre, descripcion) VALUES (:nombre,:descripcion)');
+                $result = $query->execute([
+                    'nombre' => $this->nombre,
+                    'descripcion' => $this->descripcion
+                ]);
                 if ($result) {
                     $this->id_categoria = $this->pdo->lastInsertId();
                 }
@@ -73,14 +79,24 @@ class CategoriaModel extends Model
     {
         $this->id_categoria = $array['id_categoria'];
         $this->nombre = $array['nombre'];
+        $this->descripcion = $array['descripcion'];
     }
 
     public function toArray()
     {
         return [
             'id_categoria' => $this->id_categoria,
-            'nombre' => $this->nombre
+            'nombre' => $this->nombre,
+            'descripcion' => $this->descripcion
         ];
+    }
+    // En CategoriaModel.php
+    public function countCategories()
+    {
+        $query = $this->prepare('SELECT COUNT(*) AS total FROM categoria');
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return (int) $result['total'];
     }
 
     // Getters y setters
@@ -95,9 +111,17 @@ class CategoriaModel extends Model
         return $this->nombre;
     }
 
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
     }
+
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
 }
-?>

@@ -2,6 +2,7 @@
 class ProductoModel extends Model
 {
     private $id_producto;
+    private $nombre;
     private $descripcion;
     private $precio;
     private $imagen;
@@ -12,6 +13,7 @@ class ProductoModel extends Model
     {
         parent::__construct();
         $this->id_producto = null;
+        $this->nombre = '';
         $this->descripcion = '';
         $this->precio = 0.0;
         $this->imagen = '';
@@ -55,13 +57,38 @@ class ProductoModel extends Model
             return false;
         }
     }
+    public function getProducts($n, $page, $order)
+    {
+        // Validar orden para evitar inyecciones
+        $allowedOrders = ['ASC', 'DESC'];
+        $order = strtoupper($order);
+        if (!in_array($order, $allowedOrders)) {
+            $order = 'DESC';
+        }
+
+        $offset = $page * $n;
+        try {
+            $query = $this->prepare("SELECT * FROM producto ORDER BY id_producto $order LIMIT :l OFFSET :o");
+            $query->execute([
+                'l' => $n,
+                'o' => $offset
+            ]);
+            if ($query->rowCount() > 0) {
+                return $query->fetchAll(PDO::FETCH_ASSOC);
+            }
+            return [];
+        } catch (PDOException $e) {
+            return [];
+        }
+    }
 
     public function save()
     {
         try {
             if ($this->id_producto) {
-                $query = $this->prepare('UPDATE producto SET descripcion = :descripcion, precio = :precio, imagen = :imagen, categoria_id = :categoria_id, activo = :activo WHERE id_producto = :id_producto');
+                $query = $this->prepare('UPDATE producto SET nombre = :nombre,descripcion = :descripcion, precio = :precio, imagen = :imagen, categoria_id = :categoria_id, activo = :activo WHERE id_producto = :id_producto');
                 return $query->execute([
+                    'nombre' => $this->nombre,
                     'descripcion' => $this->descripcion,
                     'precio' => $this->precio,
                     'imagen' => $this->imagen,
@@ -70,8 +97,9 @@ class ProductoModel extends Model
                     'id_producto' => $this->id_producto
                 ]);
             } else {
-                $query = $this->prepare('INSERT INTO producto (descripcion, precio, imagen, categoria_id, activo) VALUES (:descripcion, :precio, :imagen, :categoria_id, :activo)');
+                $query = $this->prepare('INSERT INTO producto (nombre, descripcion, precio, imagen, categoria_id, activo) VALUES (:nombre, :descripcion, :precio, :imagen, :categoria_id, :activo)');
                 $result = $query->execute([
+                    'nombre' => $this->nombre,
                     'descripcion' => $this->descripcion,
                     'precio' => $this->precio,
                     'imagen' => $this->imagen,
@@ -101,6 +129,7 @@ class ProductoModel extends Model
     public function from($array)
     {
         $this->id_producto = $array['id_producto'];
+        $this->nombre = $array['nombre'];
         $this->descripcion = $array['descripcion'];
         $this->precio = $array['precio'];
         $this->imagen = $array['imagen'];
@@ -112,12 +141,45 @@ class ProductoModel extends Model
     {
         return [
             'id_producto' => $this->id_producto,
+            'nombre' => $this->nombre,
             'descripcion' => $this->descripcion,
             'precio' => $this->precio,
             'imagen' => $this->imagen,
             'categoria_id' => $this->categoria_id,
             'activo' => $this->activo
         ];
+    }
+    public function countProducts()
+    {
+        $query = $this->prepare('SELECT COUNT(*) AS total FROM producto');
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return (int) $result['total'];
+    }
+
+    public function countInactiveProducts()
+    {
+        $query = $this->prepare('SELECT COUNT(*) AS total FROM producto WHERE activo = 0'); // Asumiendo que 'estado = 0' es inactivo
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return (int) $result['total'];
+    }
+    public function getProductsFilterByCategory($categoriaId, $order)
+    {
+        $allowedOrders = ['ASC', 'DESC'];
+        $order = strtoupper($order);
+        if (!in_array($order, $allowedOrders)) {
+            $order = 'DESC';
+        }
+
+        $sql = "SELECT * FROM producto WHERE categoria_id = :categoriaId ORDER BY nombre $order";
+
+        $query = $this->prepare($sql);
+        $query->execute([
+            'categoriaId' => $categoriaId
+        ]);
+
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
     // Getters y setters
@@ -136,7 +198,14 @@ class ProductoModel extends Model
     {
         $this->descripcion = $descripcion;
     }
-
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
     public function getPrecio()
     {
         return $this->precio;
@@ -177,4 +246,3 @@ class ProductoModel extends Model
         $this->activo = $activo;
     }
 }
-?>
