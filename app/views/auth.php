@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login | Menu Digital</title>
     <link rel="stylesheet" href="<?= URL ?>/css/style.css">
+    <link rel="icon" href="<?= URL ?>/favicon.svg" type="image/svg+xml">
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 

@@ -8,6 +8,7 @@
         onload="this.rel='stylesheet'"
         href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" />
     <title>Menu digital</title>
+    <link rel="stylesheet" href="<?= URL ?>/css/style.css">
     <link rel="icon" href="<?= URL ?>/favicon.svg" type="image/svg+xml">
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>

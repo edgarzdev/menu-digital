@@ -10,6 +10,7 @@
 
     <title>Menu digital | Admin</title>
     <link rel="stylesheet" href="<?= URL ?>/css/style.css">
+    <link rel="icon" href="<?= URL ?>/favicon.svg" type="image/svg+xml">
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>

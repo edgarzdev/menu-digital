@@ -10,6 +10,7 @@
 
     <title>Menu digital | Admin</title>
     <link rel="stylesheet" href="<?= URL ?>/css/style.css">
+    <link rel="icon" href="<?= URL ?>/favicon.svg" type="image/svg+xml">
     <style>
         @container(max-width:120px) {
             .table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-120 {
