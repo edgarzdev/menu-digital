@@ -1,3 +1,6 @@
+<?php
+$productos = $this->data['productos'];
+?>
 <html>
 
 <head>
@@ -94,91 +97,25 @@
             </button>
           </div>
           <h3 class="text-[#181411] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Menu Items</h3>
-          <div class="p-4">
-            <div class="flex items-stretch justify-between gap-4 rounded-lg">
-              <div class="flex flex-[2_2_0px] flex-col gap-4">
-                <div class="flex flex-col gap-1">
-                  <p class="text-[#181411] text-base font-bold leading-tight">Classic Burger</p>
-                  <p class="text-[#8a7560] text-sm font-normal leading-normal">Juicy beef patty with cheese, lettuce, tomato, and our special sauce.</p>
+          <?php foreach ($productos as $producto) : ?>
+            <div class="p-4">
+              <div class="flex items-stretch justify-between gap-4 rounded-lg">
+                <div class="flex flex-[2_2_0px] flex-col gap-4">
+                  <div class="flex flex-col gap-1">
+                    <p class="text-[#181411] text-base font-bold leading-tight"><?= htmlspecialchars($producto['nombre']) ?> <span class="font-light text-gray-500">| <?= htmlspecialchars($producto['categoria']) ?></span></p>
+                    <p class="text-[#8a7560] text-sm font-normal leading-normal"><?= htmlspecialchars($producto['descripcion']) ?></p>
+                  </div>
+                  <button
+                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-fit">
+                    <span class="truncate"><?= htmlspecialchars($producto['precio']) ?></span>
+                  </button>
                 </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-fit">
-                  <span class="truncate">$9.99</span>
-                </button>
+                <div
+                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-1"
+                  style='background-image: url("<?= URL .'/uploads/'. htmlspecialchars($producto['imagen']) ?>");'></div>
               </div>
-              <div
-                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-1"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCngoy2ybdz1hwpNY74_Qz6nv62Hw36tk6dk2siyC1PO1JF8oKrOBDeasdO_ge-BjaR1LMx-TDdJYGehtWbucYNWlpX5YYi40u1eAG2wesX-sp_1q39NEVG60JisaMbQ0TnRRs-KBqRogIWxIPkk_Xvnsfi4snr3FGnY4ZswKd7GEMT1y1KDmrFAcmrTCsAZ6ygNmla0OK71HI_ppX7D-nPfSZQjp4V8GiOLSh9izmhvOxhuYmAs4Bj6fFYqwx5yGsbeRcz4-8Xiezs");'></div>
             </div>
-          </div>
-          <div class="p-4">
-            <div class="flex items-stretch justify-between gap-4 rounded-lg">
-              <div class="flex flex-[2_2_0px] flex-col gap-4">
-                <div class="flex flex-col gap-1">
-                  <p class="text-[#181411] text-base font-bold leading-tight">Margherita Pizza</p>
-                  <p class="text-[#8a7560] text-sm font-normal leading-normal">Classic pizza with fresh mozzarella, basil, and tomato sauce.</p>
-                </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-fit">
-                  <span class="truncate">$12.99</span>
-                </button>
-              </div>
-              <div
-                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-1"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDzN7VP3HIxxQw_il8qJPFTi40xVdGmzu4W0ut2_LHuilZKCV5phkhr-BD32fF2JpjWWPzZhfY6bfOfL2BsfSEL6iyMq1txmEZrBxo5t4JMCWrWC5vz3lWTRrdDLqVkW_HH-Y2_-I0keJPMSLsi9vJ8ZWPTdu0wl3ijaicwJX1QK8hExiYIpdGd9Qj6_xQo-DtCzbJ2-9Uu6jDvii9nPn0vwvgbAkQXyGL3wlFo6-TDB7d7Uqegt8LtL-rPq84p9Z4OBy3dFxdLxqco");'></div>
-            </div>
-          </div>
-          <div class="p-4">
-            <div class="flex items-stretch justify-between gap-4 rounded-lg">
-              <div class="flex flex-[2_2_0px] flex-col gap-4">
-                <div class="flex flex-col gap-1">
-                  <p class="text-[#181411] text-base font-bold leading-tight">Caesar Salad</p>
-                  <p class="text-[#8a7560] text-sm font-normal leading-normal">Crisp romaine lettuce with parmesan cheese, croutons, and Caesar dressing.</p>
-                </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-fit">
-                  <span class="truncate">$7.99</span>
-                </button>
-              </div>
-              <div
-                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-1"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCA5-Z-D2nGyfkfw8F9wTSki752j0AwIGDSsKwq7Zw-T75UNGLgIJm1iea8kHXyZKrfk3Z79kOEcDzLIsDBzuqkdFfa9iUViWpAwK23t0-deK88yt1FLw5JyJ6zg79Wlq-Mi7IC7rX5KcQcDohUy8x8TeiV-sfUUVbHJL14M-cSYgemoO72dU4Ol3ZXRvSoikl5DfMIb5yx8nzX59U5AlUHw5KK__OfBxHfSbsmRHHF1rQx6BbRonEzYps97Uucyg7ABqFV9k4NhvOb");'></div>
-            </div>
-          </div>
-          <div class="p-4">
-            <div class="flex items-stretch justify-between gap-4 rounded-lg">
-              <div class="flex flex-[2_2_0px] flex-col gap-4">
-                <div class="flex flex-col gap-1">
-                  <p class="text-[#181411] text-base font-bold leading-tight">Spaghetti Carbonara</p>
-                  <p class="text-[#8a7560] text-sm font-normal leading-normal">Pasta with creamy sauce, bacon, and parmesan cheese.</p>
-                </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-fit">
-                  <span class="truncate">$14.99</span>
-                </button>
-              </div>
-              <div
-                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-1"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCLXzwbOjXrPowQX5l3F751YdpqmUyemBIgPvGmOSYT5rHIIN_Bl7g_ClbkNsiVGnP8EVOl5waNujgwruW5OYNd_iOf3O0ekn7CdaPV8045hMCOnk5xjCXu6juzocROo59jPCRV09gTwfqC7RaqiO_ekA2GGzv2HCUmeXaqdXDJeLz0sBTzANGek_BVt0i92e32PXnfTjaF9uIqu9rp2_ZCK4A94reil2AG7xazdhpZqBDU9mcuzlafjIouKn1cYxtNhmKotjEi_j3k");'></div>
-            </div>
-          </div>
-          <div class="p-4">
-            <div class="flex items-stretch justify-between gap-4 rounded-lg">
-              <div class="flex flex-[2_2_0px] flex-col gap-4">
-                <div class="flex flex-col gap-1">
-                  <p class="text-[#181411] text-base font-bold leading-tight">Chocolate Brownie</p>
-                  <p class="text-[#8a7560] text-sm font-normal leading-normal">Rich chocolate brownie with a scoop of vanilla ice cream.</p>
-                </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-fit">
-                  <span class="truncate">$5.99</span>
-                </button>
-              </div>
-              <div
-                class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg flex-1"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDTpUK6dV-3zr5SydQwPOfSvY3CQrbhxIrTVIkJwtfkgXDhJbaWSYSUDvhUibmnPMJl_fsOetH1FM3r6UHsZXdKmWAAM62JNw3ENA0A2b7WZxXn4irrjDf_huttZDcaNtBBrZerhFe-Qi_4LG6fRvDgKka1k-u4nXonDiJUrWEj7EhvqOEMVxvLlcQdg5irYKCrTtFqbhZ6UpwZD7s-i5XfMoMIUcM5jfm_UeiLBuch79kOKM-EcPvR9rs6TLV-qogzVnB8Rj77o98T");'></div>
-            </div>
-          </div>
+          <?php endforeach; ?>
         </div>
       </div>
     </div>

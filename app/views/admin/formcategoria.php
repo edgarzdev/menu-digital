@@ -1,4 +1,8 @@
 <html>
+<?php
+$categoria = $this->data['categoria'] ?? [];
+$accion = $this->data['accion'] ?? '';
+?>
 
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
@@ -54,7 +58,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="flex flex-col gap-1">
+                        <a href="<?= URL ?>/admin/prevMenu" class="flex flex-col gap-1">
                             <div class="flex items-center gap-3 px-3 py-2">
                                 <div class="text-[#181411]" data-icon="Eye" data-size="24px" data-weight="regular">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
@@ -64,39 +68,43 @@
                                 </div>
                                 <p class="text-[#181411] text-sm font-medium leading-normal">Ver Menu</p>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
                     <div class="flex flex-wrap justify-between gap-3 p-4">
                         <p class="text-[#181411] tracking-light text-[32px] font-bold leading-tight min-w-72">
-                            <span class="text-gray-400 font-regular">Gestionar Menu /</span> Nueva Categoria
+                            <span class="text-gray-400 font-regular">Gestionar Menu /</span> <?= htmlspecialchars(!empty($accion) ? $accion : 'Nueva') ?> Categoria
                         </p>
                     </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#181411] text-base font-medium leading-normal pb-2">Nombre de Categoría</p>
-                            <input
-                                placeholder="Indroduzca el nombre de categoría"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"
-                                value="" />
-                        </label>
-                    </div>
-                    <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
-                        <label class="flex flex-col min-w-40 flex-1">
-                            <p class="text-[#181411] text-base font-medium leading-normal pb-2">Descripción</p>
-                            <textarea
-                                placeholder="Introduz la descripción de la categoría"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border border-[#e6e0db] bg-white focus:border-[#e6e0db] min-h-36 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"></textarea>
-                        </label>
-                    </div>
+                    <?= ($accion) ? '<form action="' . URL . '/admin/updateCategory/' . $categoria['id_categoria'] . '" method="post" enctype="multipart/form-data">' : '<form action="' . URL . '/admin/storeCategory" method="post" enctype="multipart/form-data">'; ?>
+                        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                            <label class="flex flex-col min-w-40 flex-1">
+                                <p class="text-[#181411] text-base font-medium leading-normal pb-2">Nombre de Categoría</p>
+                                <input
+                                    placeholder="Indroduzca el nombre de categoría"
+                                    name="nombre"
+                                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0  focus:ring-0 focus:ring-2 focus:ring-orange-400 border border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"
+                                    value="<?= htmlspecialchars($categoria['nombre'] ?? '') ?>" />
+                            </label>
+                        </div>
+                        <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
+                            <label class="flex flex-col min-w-40 flex-1">
+                                <p class="text-[#181411] text-base font-medium leading-normal pb-2">Descripción</p>
+                                <textarea
+                                    name="descripcion"
+                                    placeholder="Introduz la descripción de la categoría"
+                                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 focus:ring-2 focus:ring-orange-400 border border-[#e6e0db] bg-white focus:border-[#e6e0db] min-h-36 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"><?= htmlspecialchars($categoria['descripcion'] ?? '') ?></textarea>
+                            </label>
+                        </div>
 
-                    <div class="max-w-[480px] flex px-4 py-3 justify-end">
-                        <button
-                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f9ad1f] hover:bg-yellow-400 text-[#181411] text-sm font-bold leading-normal tracking-[0.015em]">
-                            <span class="truncate">Guardar</span>
-                        </button>
-                    </div>
+                        <div class="max-w-[480px] flex px-4 py-3 justify-end">
+                            <button
+                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f9ad1f] hover:bg-yellow-400 text-[#181411] text-sm font-bold leading-normal tracking-[0.015em]">
+                                <span class="truncate">Guardar</span>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

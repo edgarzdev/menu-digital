@@ -1,3 +1,8 @@
+<?php
+$categorias = $this->data['categorias'];
+$producto = $this->data['producto'] ?? [];
+$accion = $this->data['accion'] ?? "";
+?>
 <html>
 
 <head>
@@ -57,83 +62,151 @@
                             </div>
                         </div>
                         <div class="flex flex-col gap-1">
-                            <div class="flex items-center gap-3 px-3 py-2">
-                                <div class="text-[#181411]" data-icon="Eye" data-size="24px" data-weight="regular">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                                        <path
-                                            d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path>
-                                    </svg>
+                            <a href="<?= URL ?>/admin/prevMenu" class="flex flex-col gap-1">
+                                <div class="flex items-center gap-3 px-3 py-2">
+                                    <div class="text-[#181411]" data-icon="Eye" data-size="24px" data-weight="regular">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                                            <path
+                                                d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-[#181411] text-sm font-medium leading-normal">Ver Menu</p>
                                 </div>
-                                <p class="text-[#181411] text-sm font-medium leading-normal">Ver Menu</p>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
                     <div class="flex flex-wrap justify-between gap-3 p-4">
                         <p class="text-[#181411] tracking-light text-[32px] font-bold leading-tight min-w-72">
-                            <span class="text-gray-400 font-regular">Gestionar Menu /</span> Nuevo Producto
+                            <span class="text-gray-400 font-regular">Gestionar Menu /</span> <?= htmlspecialchars(!empty($accion) ? $accion : 'Nuevo') ?> Producto
                         </p>
                     </div>
+                    <?= ($accion) ? '<form action="' . URL . '/admin/updateProduct/' . $producto['id_producto'] . '" method="post" enctype="multipart/form-data">' : '<form action="' . URL . '/admin/storeProduct" method="post" enctype="multipart/form-data">'; ?>
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#181411] text-base font-medium leading-normal pb-2">Nombre del producto</p>
                             <input
+                                name="nombre"
                                 placeholder="Introduzca el nombre del producto"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"
-                                value="" />
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 focus:outline-none focus:ring-2 focus:ring-orange-400 border border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"
+                                value="<?= htmlspecialchars($producto['nombre'] ?? '')  ?>" />
                         </label>
                     </div>
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#181411] text-base font-medium leading-normal pb-2">Descripcion</p>
                             <textarea
+                                name="descripcion"
                                 placeholder="Introduzaca la description del producto"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border border-[#e6e0db] bg-white focus:border-[#e6e0db] min-h-36 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"></textarea>
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 focus:ring-2 focus:ring-orange-400 border border-[#e6e0db] bg-white focus:border-[#e6e0db] min-h-36 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"><?= htmlspecialchars($producto['nombre'] ?? '')  ?>
+                                </textarea>
+
                         </label>
                     </div>
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#181411] text-base font-medium leading-normal pb-2">Precio</p>
                             <input
+                                name="precio"
+                                type="number"
                                 placeholder="Introduzca el precio"
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"
-                                value="" />
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 focus:ring-2 focus:ring-orange-400 border border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal"
+                                value="<?= htmlspecialchars($producto['precio']??'')?>" />
                         </label>
                     </div>
                     <div class="flex max-w-[480px] flex-wrap items-end gap-4 px-4 py-3">
                         <label class="flex flex-col min-w-40 flex-1">
                             <p class="text-[#181411] text-base font-medium leading-normal pb-2">Categoría</p>
                             <select
-                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 bg-[image:--select-button-svg] placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal">
-                                <option value="one">Seleccionar categoría</option>
-                                <option value="two">two</option>
-                                <option value="three">three</option>
+                                name="categoria"
+                                class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border  border-[#e6e0db] bg-white focus:border-[#e6e0db] h-14 bg-[image:--select-button-svg] placeholder:text-[#8a7560] p-[15px] text-base font-normal leading-normal">
+                                <?php
+                                if (!empty($accion) && !empty($producto['categoria'])) {
+                                    if (is_array($producto['categoria']) && isset($producto['categoria']['nombre'])) {
+                                        $catNombre = $producto['categoria']['nombre'];
+                                    } else {
+                                        $catNombre = $producto['categoria'];
+                                    }
+                                    echo '<option value="' . htmlspecialchars($producto['categoria_id']) . '">' . htmlspecialchars($catNombre) . '</option>';
+                                } else {
+                                    echo '<option value="">Seleccionar categoría</option>';
+                                }
+
+                                foreach ($categorias as $categoria) {
+                                    if (!empty($producto['categoria_id']) && $categoria['id_categoria'] == $producto['categoria_id']) continue;
+                                    echo '<option value="' . htmlspecialchars($categoria['id_categoria']) . '">' . htmlspecialchars($categoria['nombre']) . '</option>';
+                                }
+                                ?>
                             </select>
                         </label>
                     </div>
-                    <div class="max-w-[480px] flex flex-col p-4">
+                    <div class="max-w-[480px] flex flex-col p-4" id="dropzone">
                         <div class="flex flex-col items-center gap-6 rounded-lg border-2 border-dashed border-[#e6e0db] px-6 py-14">
                             <div class="flex max-w-[480px] flex-col items-center gap-2">
                                 <p class="text-[#181411] text-lg font-bold leading-tight tracking-[-0.015em] max-w-[480px] text-center">Subir imagen</p>
                                 <p class="text-[#181411] text-sm font-normal leading-normal max-w-[480px] text-center">Arrastre y suelte o haga clic para cargar</p>
                             </div>
                             <button
+                                type="button"
                                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-bold leading-normal tracking-[0.015em]">
                                 <span class="truncate">Explorar archivos</span>
                             </button>
+                            <input type="file" id="fileInput" name="imagen" class="hidden" accept="image/*">
+                            <p id="fileName" class="text-sm text-gray-500 mt-2 hidden"></p>
                         </div>
                     </div>
                     <div class="max-w-[480px] flex px-4 py-3 justify-end">
                         <button
+                            type="submit"
                             class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-[#f9ad1f] hover:bg-yellow-400 text-[#181411] text-sm font-bold leading-normal tracking-[0.015em]">
                             <span class="truncate">Guardar</span>
                         </button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const dropzone = document.getElementById("dropzone");
+        const fileInput = document.getElementById("fileInput");
+        const fileName = document.getElementById("fileName");
+
+        // Clic para abrir el explorador
+        dropzone.addEventListener("click", () => fileInput.click());
+
+        // Cuando se selecciona un archivo
+        fileInput.addEventListener("change", (e) => {
+            if (e.target.files.length > 0) {
+                fileName.textContent = e.target.files[0].name;
+                fileName.classList.remove("hidden");
+            }
+        });
+
+        // Arrastrar archivo encima
+        dropzone.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropzone.classList.add("border-[#a58d7f]");
+        });
+
+        // Salir del área
+        dropzone.addEventListener("dragleave", () => {
+            dropzone.classList.remove("border-[#a58d7f]");
+        });
+
+        // Soltar archivo
+        dropzone.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropzone.classList.remove("border-[#a58d7f]");
+
+            if (e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                fileName.textContent = e.dataTransfer.files[0].name;
+                fileName.classList.remove("hidden");
+            }
+        });
+    </script>
 </body>
 
 </html>

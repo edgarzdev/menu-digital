@@ -1,3 +1,9 @@
+<?php
+$productos = $this->data['productos'];
+$nProductos = $this->data['n_productos'];
+$nProdInactivos = $this->data['n_prod_inactivos'];
+$nCategorias = $this->data['n_categorias'];
+?>
 <html>
 
 <head>
@@ -110,15 +116,15 @@
                     <div class="flex flex-wrap gap-4 p-4">
                         <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#e6e0db]">
                             <p class="text-[#181411] text-base font-medium leading-normal">Total de productos</p>
-                            <p class="text-[#181411] tracking-light text-2xl font-bold leading-tight">25</p>
+                            <p class="text-[#181411] tracking-light text-2xl font-bold leading-tight"><?= htmlspecialchars($nProductos) ?></p>
                         </div>
                         <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#e6e0db]">
                             <p class="text-[#181411] text-base font-medium leading-normal">Productos inactivos</p>
-                            <p class="text-[#181411] tracking-light text-2xl font-bold leading-tight">5</p>
+                            <p class="text-[#181411] tracking-light text-2xl font-bold leading-tight"><?= htmlspecialchars($nProdInactivos) ?></p>
                         </div>
                         <div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-lg p-6 border border-[#e6e0db]">
                             <p class="text-[#181411] text-base font-medium leading-normal">Total de Categorias</p>
-                            <p class="text-[#181411] tracking-light text-2xl font-bold leading-tight">3</p>
+                            <p class="text-[#181411] tracking-light text-2xl font-bold leading-tight"><?= htmlspecialchars($nCategorias) ?></p>
                         </div>
                     </div>
                     <h3 class="text-[#181411] text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Productos agregados recientemente</h3>
@@ -139,54 +145,36 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="border-t border-t-[#e6e0db]">
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                                            Gourmet Burger
-                                        </td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">Burgers</td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">$11.99</td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                                            <button
-                                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
-                                                <span class="truncate">Available</span>
-                                            </button>
-                                        </td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                                            Edit
-                                        </td>
-                                    </tr>
-                                    <tr class="border-t border-t-[#e6e0db]">
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                                            Pasta Primavera
-                                        </td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">Pasta</td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">$13.99</td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                                            <button
-                                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
-                                                <span class="truncate">Available</span>
-                                            </button>
-                                        </td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                                            Edit
-                                        </td>
-                                    </tr>
-                                    <tr class="border-t border-t-[#e6e0db]">
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                                            Apple Pie
-                                        </td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">Desserts</td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">$6.99</td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                                            <button
-                                                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
-                                                <span class="truncate">Available</span>
-                                            </button>
-                                        </td>
-                                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                                            Edit
-                                        </td>
-                                    </tr>
+                                    <?php foreach ($productos as $producto) :
+                                        $str = $producto['precio'] ? 'activo' : 'inactivo';
+                                    ?>
+                                        <tr class="border-t border-t-[#e6e0db]">
+                                            <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
+                                                <?= htmlspecialchars($producto['nombre']) ?>
+                                            </td>
+                                            <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
+                                                <?= htmlspecialchars($producto['categoria']) ?>
+                                            </td>
+                                            <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
+                                                <?= htmlspecialchars($producto['precio']) ?>
+                                            </td>
+                                            <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                                                <button
+                                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
+                                                    <span class="truncate"><?= htmlspecialchars($str) ?></span>
+                                                </button>
+                                            </td>
+                                            <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
+
+                                                <button
+                                                    onclick="location.href='<?=URL ?>/admin/editProduct/<?= $producto['id_producto'] ?>'"
+                                                    class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
+                                                    <span class="truncate"> Editar</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+
                                 </tbody>
                             </table>
                         </div>

@@ -1,4 +1,7 @@
-<html>
+<?php
+$productos = $this->data['productos'];
+$categorias = $this->data['categorias'];
+?><html>
 
 <head>
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
@@ -92,7 +95,7 @@
             <div class="flex px-4 py-3 justify-between items-center">
               <h3 class="text-[#181411] text-lg font-bold tracking-[-0.015em] items-center">Productos</h3>
               <button
-                onclick="location.href='<?= URL ?>/admin/newProduct'"
+                onclick="location.href='<?= URL ?>/admin/createProduct'"
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f9ad1f] hover:bg-yellow-400 text-[#181411] text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Agregar Nuevo Producto</span>
               </button>
@@ -134,86 +137,35 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                        Classic Burger
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">Burgers</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">$9.99</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                        <button
-                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
-                          <span class="truncate">Available</span>
-                        </button>
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                        Margherita Pizza
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">Pizzas</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">$12.99</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                        <button
-                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
-                          <span class="truncate">Available</span>
-                        </button>
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                        Caesar Salad
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">Salads</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">$7.99</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                        <button
-                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
-                          <span class="truncate">Available</span>
-                        </button>
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                        Spaghetti Carbonara
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">Pasta</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">$14.99</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                        <button
-                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
-                          <span class="truncate">Available</span>
-                        </button>
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                        Chocolate Brownie
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">Desserts</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">$5.99</td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
-                        <button
-                          class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
-                          <span class="truncate">Available</span>
-                        </button>
-                      </td>
-                      <td class="table-66ac1ca8-df4e-416d-a584-af9b344548a8-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
+                    <?php foreach ($productos as $producto) :
+                      $str = $producto['precio'] ? 'activo' : 'inactivo';
+                    ?>
+                      <tr class="border-t border-t-[#e6e0db]">
+                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
+                          <?= htmlspecialchars($producto['nombre']) ?>
+                        </td>
+                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
+                          <?= htmlspecialchars($producto['categoria']) ?>
+                        </td>
+                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-360 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
+                          <?= htmlspecialchars($producto['precio']) ?>
+                        </td>
+                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-480 h-[72px] px-4 py-2 w-60 text-sm font-normal leading-normal">
+                          <button
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
+                            <span class="truncate"><?= htmlspecialchars($str) ?></span>
+                          </button>
+                        </td>
+                        <td class="table-b0b7f99b-c9e2-4e22-8bf1-115a047412a9-column-600 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
+
+                          <button
+                            onclick="location.href='<?= URL ?>/admin/editProduct/<?= $producto['id_producto'] ?>'"
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
+                            <span class="truncate"> Editar</span>
+                          </button>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -223,7 +175,7 @@
             <div class="flex px-4 py-3 justify-between items-center">
               <h3 class="text-[#181411] text-lg font-bold tracking-[-0.015em] items-center">Categorias</h3>
               <button
-                onclick="location.href='<?= URL ?>/admin/newCategory'"
+                onclick="location.href='<?= URL ?>/admin/createCategory'"
                 class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f9ad1f] hover:bg-yellow-400 text-[#181411] text-sm font-bold leading-normal tracking-[0.015em]">
                 <span class="truncate">Agregar Nueva categoria</span>
               </button>
@@ -265,68 +217,30 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                        Appetizers
-                      </td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
-                        Starters to whet your appetite
-                      </td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-360 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                        Main Courses
-                      </td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
-                        Hearty dishes for the main meal
-                      </td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-360 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">Desserts</td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
-                        Sweet treats to end your meal
-                      </td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-360 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
-                        Beverages
-                      </td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
-                        Drinks to complement your meal
-                      </td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-360 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
-                    <tr class="border-t border-t-[#e6e0db]">
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">Sides</td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
-                        Extra items to accompany your main course
-                      </td>
-                      <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-360 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
-                        Edit
-                      </td>
-                    </tr>
+                    <?php foreach ($categorias as $categoria) :
+                    ?>
+                      <tr class="border-t border-t-[#e6e0db]">
+                        <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-120 h-[72px] px-4 py-2 w-[400px] text-[#181411] text-sm font-normal leading-normal">
+                          <?= htmlspecialchars($categoria['nombre']) ?>
+                        </td>
+                        <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-240 h-[72px] px-4 py-2 w-[400px] text-[#8a7560] text-sm font-normal leading-normal">
+                          <?= htmlspecialchars($categoria['descripcion']) ?>
+                        </td>
+                        <td class="table-c4e06e96-3266-4177-bc7f-f66a771a4a6e-column-360 h-[72px] px-4 py-2 w-60 text-[#8a7560] text-sm font-bold leading-normal tracking-[0.015em]">
+                          <button
+                            onclick="location.href='<?= URL ?>/admin/editCategory/<?= $categoria['id_categoria'] ?>'"
+                            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 bg-[#f5f2f0] text-[#181411] text-sm font-medium leading-normal w-full">
+                            <span class="truncate"> Editar</span>
+                          </button>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+
                   </tbody>
                 </table>
               </div>
             </div>
-            <div class="flex px-4 py-3 justify-end">
-              <button
-                onclick="location.href='<?= URL ?>/admin/newCategory'"
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-orange-500 hover:bg-orange-400 text-[#181411] text-sm font-bold leading-normal tracking-[0.015em]">
-                <span class="truncate">Agregar Nueva Categoria</span>
-              </button>
-            </div>
+            
           </div>
         </div>
       </div>
