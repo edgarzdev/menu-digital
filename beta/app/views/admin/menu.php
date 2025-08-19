@@ -18,7 +18,7 @@ $categorias = $this->data['categorias'];
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 </head>
 
-<body style='font-family: "Work Sans", "Noto Sans", sans-serif;'>
+<body style='font-family: "Work Sans", "Noto Sans", sans-serif;'>    <?php $this->showMessages(); ?>
   <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden">
     <div class="layout-container flex h-full grow flex-col">
       <div class="gap-1 px-6 flex flex-1 justify-center py-5">
@@ -101,7 +101,7 @@ $categorias = $this->data['categorias'];
               </button>
             </div>
             <div class="px-4 py-3">
-              <label class="flex flex-col min-w-40 h-12 w-full">
+              <!--<label class="flex flex-col min-w-40 h-12 w-full">
                 <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
                   <div
                     class="text-[#8a7560] flex border-none bg-[#f5f2f0] items-center justify-center pl-4 rounded-l-lg border-r-0"
@@ -118,7 +118,7 @@ $categorias = $this->data['categorias'];
                     class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border-none bg-[#f5f2f0] focus:border-none h-full placeholder:text-[#8a7560] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
                     value="" />
                 </div>
-              </label>
+              </label>-->
             </div>
             <div class="px-4 py-3 @container">
               <div class="flex overflow-hidden rounded-lg border border-[#e6e0db] bg-white">
@@ -181,7 +181,7 @@ $categorias = $this->data['categorias'];
               </button>
             </div>
             <div class="px-4 py-3">
-              <label class="flex flex-col min-w-40 h-12 w-full">
+              <!--<label class="flex flex-col min-w-40 h-12 w-full">
                 <div class="flex w-full flex-1 items-stretch rounded-lg h-full">
                   <div
                     class="text-[#8a7560] flex border-none bg-[#f5f2f0] items-center justify-center pl-4 rounded-l-lg border-r-0"
@@ -198,7 +198,7 @@ $categorias = $this->data['categorias'];
                     class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#181411] focus:outline-0 focus:ring-0 border-none bg-[#f5f2f0] focus:border-none h-full placeholder:text-[#8a7560] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal"
                     value="" />
                 </div>
-              </label>
+              </label>-->
             </div>
             <div class="px-4 py-3 @container">
               <div class="flex overflow-hidden rounded-lg border border-[#e6e0db] bg-white">
