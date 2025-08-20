@@ -13,7 +13,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        return Categoria::with('productos')->get();
+        return response()->json(Categoria::all(), 200);
     }
 
     /**
@@ -38,7 +38,7 @@ class CategoriaController extends Controller
      */
     public function show(string $id)
     {
-        $categoria = Categoria::with('productos')->find($id);
+        $categoria = Categoria::find($id);
         if (!$categoria) {
             return response()->json([
                 'mensaje' => 'Categoria No encontrado'
